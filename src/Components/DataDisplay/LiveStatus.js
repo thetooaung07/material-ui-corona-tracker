@@ -5,6 +5,8 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import SlowMotionVideoRoundedIcon from '@material-ui/icons/SlowMotionVideoRounded';
+import { Box } from "@material-ui/core";
 
 const useStyles = makeStyles({
   root: {
@@ -14,11 +16,16 @@ const useStyles = makeStyles({
   },
 
   title: {
-    fontSize: 14,
+    
   },
   pos: {
     marginBottom: 12,
   },
+  // buttonEdit: {
+  //   paddingLeft: 15,
+  //   paddingRight: 15
+  // },
+  
 });
 
 const LiveStatus = () => {
@@ -28,24 +35,20 @@ const LiveStatus = () => {
     
       <Card className={classes.root} >
         <CardContent>
-          <Typography
-            className={classes.title}
-            color="textSecondary"
-            gutterBottom
-          >
-            Word of the Day
-          </Typography>
-          <Typography variant="h5" component="h2">
-            Hello
-          </Typography>
-          <Typography className={classes.pos} color="textSecondary">
-            adjective
-          </Typography>
-          <Typography variant="body2" component="p">
-            well meaning and kindly.
-            <br />
-            {'"a benevolent smile"'}
-          </Typography>
+        
+        <Button
+        size="large"
+        variant="outlined"
+        color="secondary"
+        disableRipple
+        disableFocusRipple
+        className={classes.buttonEdit}
+        startIcon={<SlowMotionVideoRoundedIcon />}
+      >
+        Live
+      </Button>
+          
+          
         </CardContent>
         <CardActions>
           <Button size="small">Learn More</Button>

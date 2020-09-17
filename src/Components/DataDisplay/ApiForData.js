@@ -12,7 +12,7 @@ export const fetchData = async (country) => {
     const {
       data: { confirmed, recovered, deaths, lastUpdate },
     } = await Axios.get(changeableUrl);
-   
+  //console.log(confirmed, recovered, deaths, lastUpdate );
     return { confirmed, recovered, deaths, lastUpdate };
   } catch (error) {
     console.log(error);
