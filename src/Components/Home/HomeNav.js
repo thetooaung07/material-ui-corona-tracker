@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import {
   AppBar,
   Toolbar,
@@ -9,6 +9,7 @@ import {
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import PublicRoundedIcon from "@material-ui/icons/PublicRounded";
+import { useHistory } from "react-router-dom";
 
 const useStyle = makeStyles((theme) => ({
   root: {
@@ -31,20 +32,33 @@ const useStyle = makeStyles((theme) => ({
 }));
 
 const HomeNav = (props) => {
-
+  console.log(props);
+  const history = useHistory();
   const classes = useStyle();
-  const [tabSelect, setTabSelect] = React.useState(0);
+  const [tabSelect, setTabSelect] = React.useState("1");
 
- 
+  const tabNametoIndex = {
+    1: "home",
+    2: "livedata",
+    3: "about",
+    4: "contact",
+  };
+  const IndextoTabName = {
+    home: 1,
+    livedata: 2,
+    about: 3,
+    contact: 4,
+  };
+  useEffect(()=> {
 
+  },[tabSelect])
   const handleChange = (event, newValue) => {
-
+    history.push(`/${tabNametoIndex[newValue]}`);
     setTabSelect(newValue);
   };
   console.log(tabSelect);
   return (
     <div className={classes.root}>
-    
       <AppBar className={classes.appbar} position="static">
         <Toolbar>
           <Button
@@ -60,12 +74,13 @@ const HomeNav = (props) => {
           </Button>
           <div className={classes.title}></div>
           <Tabs value={tabSelect} onChange={handleChange}>
-            <Tab className={classes.tabWidth} label="Home" />
-            <Tab className={classes.tabWidth} label="Live Data" />
-            <Tab className={classes.tabWidth} label="About" />
+            <Tab className={classes.tabWidth} value="1" label="Home" />
+            <Tab className={classes.tabWidth} value="2" label="Live Data" />
+            <Tab className={classes.tabWidth} value="3" label="About" />
             <Tab
               className={classes.tabWidth}
               label="Contact"
+              value="4"
               style={{ marginRight: "30px" }}
             />
           </Tabs>
