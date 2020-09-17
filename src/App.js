@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import HomeNav from "./Components/Home/HomeNav";
 import ContentBody from "./Components/Home/ContentBody";
@@ -8,7 +8,7 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
-import LiveData from "./Components/LiveData/LiveData";
+import LiveData from "./Components/DataDisplay/LiveData";
 import About from "./Components/About/About";
 import ContactUs from "./Components/Contact/ContactUs";
 
@@ -18,7 +18,6 @@ function App() {
       <Router>
         <HomeNav></HomeNav>
         <Switch>
-        <Redirect from="/" to="/home"></Redirect>
           <Route
             exact
             path="/home"
@@ -39,6 +38,7 @@ function App() {
             path="/contact"
             render={(props) => <ContactUs {...props} />}
           ></Route>
+          <Redirect from="/" to="/home"></Redirect>
         </Switch>
       </Router>
     </div>

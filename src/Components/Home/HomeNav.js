@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
 import {
   AppBar,
   Toolbar,
@@ -31,12 +31,7 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 
-const HomeNav = (props) => {
-  console.log(props);
-  const history = useHistory();
-  const classes = useStyle();
-  const [tabSelect, setTabSelect] = React.useState("1");
-
+const HomeNav = () => {
   const tabNametoIndex = {
     1: "home",
     2: "livedata",
@@ -49,14 +44,24 @@ const HomeNav = (props) => {
     about: 3,
     contact: 4,
   };
-  useEffect(()=> {
+  const location = window.location.href;
+  const locationName = location.split("/")[3];
+  // console.log(locationName);
 
-  },[tabSelect])
+  const history = useHistory();
+  const classes = useStyle();
+  const [tabSelect, setTabSelect] = React.useState(
+    IndextoTabName[locationName]
+  );
+  // console.log(window.location.href);
+  // console.log(tabSelect);
+
+  useEffect(() => {}, [tabSelect]);
   const handleChange = (event, newValue) => {
     history.push(`/${tabNametoIndex[newValue]}`);
     setTabSelect(newValue);
   };
-  console.log(tabSelect);
+  // console.log(tabSelect);
   return (
     <div className={classes.root}>
       <AppBar className={classes.appbar} position="static">
@@ -74,13 +79,13 @@ const HomeNav = (props) => {
           </Button>
           <div className={classes.title}></div>
           <Tabs value={tabSelect} onChange={handleChange}>
-            <Tab className={classes.tabWidth} value="1" label="Home" />
-            <Tab className={classes.tabWidth} value="2" label="Live Data" />
-            <Tab className={classes.tabWidth} value="3" label="About" />
+            <Tab className={classes.tabWidth} value={1} label="Home" />
+            <Tab className={classes.tabWidth} value={2} label="Live Data" />
+            <Tab className={classes.tabWidth} value={3} label="About" />
             <Tab
               className={classes.tabWidth}
               label="Contact"
-              value="4"
+              value={4}
               style={{ marginRight: "30px" }}
             />
           </Tabs>
