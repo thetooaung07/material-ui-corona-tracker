@@ -62,7 +62,7 @@ const ContentBody = () => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="lg" variant="outlined" className={classes.buttonCenter}>
+        <Button variant="outlined" className={classes.buttonCenter}>
           Learn More Learn More Learn More
         </Button>
       </CardActions>

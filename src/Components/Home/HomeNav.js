@@ -2,7 +2,6 @@ import React from "react";
 import {
   AppBar,
   Toolbar,
-  IconButton,
   Typography,
   Button,
   Tabs,
@@ -21,18 +20,6 @@ const useStyle = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
-    fontFamily: [
-      "-apple-system",
-      "BlinkMacSystemFont",
-      '"Segoe UI"',
-      "Roboto",
-      '"Helvetica Neue"',
-      "Arial",
-      "sans-serif",
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-    ].join(","),
   },
   appbar: {
     backgroundColor: "rgba(158,158,158,0.5)",
@@ -43,15 +30,21 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 
-const HomeNav = () => {
+const HomeNav = (props) => {
+
   const classes = useStyle();
-  const [value, setValue] = React.useState(0);
+  const [tabSelect, setTabSelect] = React.useState(0);
+
+ 
 
   const handleChange = (event, newValue) => {
-    setValue(newValue);
+
+    setTabSelect(newValue);
   };
+  console.log(tabSelect);
   return (
     <div className={classes.root}>
+    
       <AppBar className={classes.appbar} position="static">
         <Toolbar>
           <Button
@@ -66,14 +59,14 @@ const HomeNav = () => {
             </Typography>
           </Button>
           <div className={classes.title}></div>
-          <Tabs value={value} onChange={handleChange} >
+          <Tabs value={tabSelect} onChange={handleChange}>
             <Tab className={classes.tabWidth} label="Home" />
             <Tab className={classes.tabWidth} label="Live Data" />
             <Tab className={classes.tabWidth} label="About" />
             <Tab
               className={classes.tabWidth}
-              style={{ marginRight: "30px" }}
               label="Contact"
+              style={{ marginRight: "30px" }}
             />
           </Tabs>
         </Toolbar>
