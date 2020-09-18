@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
 import HomeNav from "./Components/Home/HomeNav";
 import ContentBody from "./Components/Home/ContentBody";
@@ -16,30 +16,34 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <HomeNav></HomeNav>
-        <Switch>
-          <Route
-            exact
-            path="/home"
-            render={(props) => <ContentBody {...props} />}
-          ></Route>
-          <Route
-            exact
-            path="/livedata"
-            render={(props) => <LiveData {...props} />}
-          ></Route>
-          <Route
-            exact
-            path="/about"
-            render={(props) => <About {...props} />}
-          ></Route>
-          <Route
-            exact
-            path="/contact"
-            render={(props) => <ContactUs {...props} />}
-          ></Route>
-          <Redirect from="/" to="/home"></Redirect>
-        </Switch>
+        <div>
+          <HomeNav></HomeNav>
+        </div>
+        <div style={{height: "100%"}}>
+          <Switch>
+            <Route
+              exact
+              path="/home"
+              render={(props) => <ContentBody {...props} />}
+            ></Route>
+            <Route
+              exact
+              path="/livedata"
+              render={(props) => <LiveData {...props} />}
+            ></Route>
+            <Route
+              exact
+              path="/about"
+              render={(props) => <About {...props} />}
+            ></Route>
+            <Route
+              exact
+              path="/contact"
+              render={(props) => <ContactUs {...props} />}
+            ></Route>
+            <Redirect from="/" to="/home"></Redirect>
+          </Switch>
+        </div>
       </Router>
     </div>
   );
