@@ -8,9 +8,10 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
-import LiveData from "./Components/DataDisplay/LiveData";
+
 import About from "./Components/About/About";
 import ContactUs from "./Components/Contact/ContactUs";
+import LiveData from "./Components/DataDisplayV2/LiveData";
 
 function App() {
   return (

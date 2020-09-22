@@ -6,9 +6,8 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import PlayCircleFilledRoundedIcon from "@material-ui/icons/PlayCircleFilledRounded";
 import { Divider } from "@material-ui/core";
+import CountrySelector from "./CountrySelector";
 
-import { fetchData } from "./ApiForData";
-import CountrySelector from "../DataDisplayV2/CountrySelector";
 
 const useStyles = makeStyles({
   root: {
@@ -45,20 +44,14 @@ const useStyles = makeStyles({
     fontSize: 20,
     fontWeight: 600,
     textTransform: "capitalize",
-  
-    
   },
 });
 
-const LiveStatus = ({ setResultData }) => {
+const LiveStatus = ({ setCountrySelected }) => {
   const classes = useStyles();
-  // const [country, setCountry] = useState("");
-  const handleCountrySelect = async (selectedCountry) => {
-    // console.log(selectedCountryData);
-    // setCountry(selectedCountry);
-    const selectedCountryData = await fetchData(selectedCountry);
-    setResultData(selectedCountryData);
-  };
+
+
+
   return (
     <Card className={classes.root}>
       <CardContent className={classes.content}>
@@ -79,7 +72,7 @@ const LiveStatus = ({ setResultData }) => {
         <Typography variant="h6" className={classes.typoEdit}>
           Stats Overview
         </Typography>
-        <CountrySelector handleCountrySelect={handleCountrySelect} />
+        <CountrySelector setCountrySelected={setCountrySelected} />
       </CardContent>
     </Card>
   );
