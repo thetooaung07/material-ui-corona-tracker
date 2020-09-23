@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Box, Grid } from "@material-ui/core";
+import {  Grid } from "@material-ui/core";
 import LiveStatus from "./LiveStatus";
 import { makeStyles } from "@material-ui/core/styles";
 import ResultCard from "./ResultCard";
 import headerImg from "../../img/headerImg.png";
 import Axios from "axios";
+import Table from "./Table";
+import {sortedData} from "../../utils"
+import LineGraph from "./LineGraph";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,6 +46,7 @@ const useStyles = makeStyles((theme) => ({
   rightSide: {
     flex: 0.3,
     backgroundColor: "green",
+
   },
   liveStatus: {
     marginLeft: 20,
@@ -55,6 +59,7 @@ const useStyles = makeStyles((theme) => ({
 const LiveData = () => {
   const classes = useStyles();
   const [countrySelected, setCountrySelected] = useState("global");
+  const [tableData , setTableData] = useState([]);
   const [selectedData, setSelectedData] = useState({
     cases: 0,
     todayCases: 0,
@@ -79,13 +84,22 @@ const LiveData = () => {
       deaths: apiData.data.deaths,
       todayDeaths: apiData.data.todayDeaths,
       updated: apiData.data.updated,
+      country: apiData.data.country
     });
+
+    const url = `https://disease.sh/v3/covid-19/countries`
+    const tableApi = await Axios.get(url);
+    console.log("tableApi");
+    const sortData = sortedData(tableApi.data);
+    setTableData(sortData);
   };
 
   useEffect(() => {
     ApiInitialCountriesList();
   }, [countrySelected]);
 
+
+  console.log("Selected Data for country" , countrySelected);
   console.log(selectedData);
   console.log(countrySelected);
 
@@ -151,7 +165,11 @@ const LiveData = () => {
           </Grid>
         </div>
       </div>
-      <div className={classes.rightSide}></div>
+      <div className={classes.rightSide}>
+        <Table data={tableData} ></Table>
+
+        <LineGraph />
+      </div>
     </div>
   );
 };
