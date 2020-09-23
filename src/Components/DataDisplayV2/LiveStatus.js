@@ -15,7 +15,6 @@ const useStyles = makeStyles({
     //  maxWidth: 350,
     // width: "100%",
     // border: "1px solid #e5e5ea",
-    margin: "0 auto",
     boxShadow: "0 4px 4px rgba(0, 0, 0, 0.12), 0 0 10px rgba(0, 0, 0, 0.06)",
     borderRadius: "6px",
   },

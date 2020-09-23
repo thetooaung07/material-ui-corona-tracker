@@ -66,18 +66,19 @@ const HomeNav = () => {
     <div className={classes.root}>
       <AppBar className={classes.appbar} position="static">
         <Toolbar>
-          <Button
-            className={classes.menuButton}
-            color="inherit"
-            variant="text"
-            disableRipple
-            startIcon={<PublicRoundedIcon />}
-          >
-            <Typography variant="h6" className={classes.title}>
-              &nbsp; Covid-Tracker
-            </Typography>
-          </Button>
-          <div className={classes.title}></div>
+          <div className={classes.title}>
+            <Button
+              className={classes.menuButton}
+              color="inherit"
+              variant="text"
+              disableRipple
+              startIcon={<PublicRoundedIcon />}
+            >
+              <Typography variant="h6" className={classes.title}>
+                &nbsp; Covid-Tracker
+              </Typography>
+            </Button>
+          </div>
           <Tabs value={tabSelect} onChange={handleChange}>
             <Tab className={classes.tabWidth} value={1} label="Home" />
             <Tab className={classes.tabWidth} value={2} label="Live Data" />

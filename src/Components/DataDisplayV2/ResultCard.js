@@ -8,20 +8,18 @@ import DividerWithText from "./DividerWithText";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    // width: "100%",
-    //  minWidth: 250,
-    // maxWidth: 250,
-    // border: "1px solid #e5e5ea",
+    // maxWidth: " 250px",
+    // minWidth: " 250px",
+    border: "1px solid #e5e5ea",
     boxShadow: "0 4px 4px rgba(0, 0, 0, 0.12), 0 0 10px rgba(0, 0, 0, 0.06)",
     borderRadius: "6px",
   },
-
   title: {
     textAlign: "center",
     fontWeight: 500,
     color: " rgba(73, 73, 73,0.9)",
     fontSize: 35,
-    paddingBottom: 5
+    paddingBottom: 5,
   },
   caseName: {
     marginTop: theme.spacing(0.2),
@@ -42,26 +40,28 @@ const useStyles = makeStyles((theme) => ({
 const ResultCard = (props) => {
   const { data } = props;
   const title = props.case;
-  const lastUpdate = props.lastUpdate;
+
   const color = props.cardColor;
 
   const classes = useStyles();
+
   return (
-    <Card className={classes.root} >
+    <Card className={classes.root}>
       <CardContent
         className={classes.cardContentEdit}
         style={{ backgroundColor: color.bgColor }}
       >
         <Typography
           className={classes.title}
-         
           gutterBottom
           variant="h5"
           component="h2"
         >
-          <CountUp start={0} end={data.value} duration={2} />
+          <CountUp start={0} end={data.total} duration={2} />
         </Typography>
-        <DividerWithText>{new Date(lastUpdate).toDateString()}</DividerWithText>
+        <DividerWithText>
+          {new Date(data.updated).toDateString()}
+        </DividerWithText>
         <Typography
           className={classes.caseName}
           variant="subtitle1"

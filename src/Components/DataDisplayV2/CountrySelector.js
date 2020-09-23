@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CountrySelector = () => {
+const CountrySelector = ({setCountrySelected}) => {
   const classes = useStyles();
 
   const [selectedCountry, SetSelectedCountry] = React.useState("global");
@@ -46,7 +46,6 @@ const CountrySelector = () => {
       countryCode === "global"
         ? `https://disease.sh/v3/covid-19/countries`
         : `https://disease.sh/v3/covid-19/countries/${countryCode}`;
-
       const apiData = await Axios.get(variableUrl);
       console.log(apiData.data);
       
