@@ -9,13 +9,13 @@ import { MenuItem, Select } from "@material-ui/core";
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 120,
+    // minWidth: 120,
     paddingRight: 20,
   },
-  selectRoot: {
-    padding: 0,
-    margin: 0,
-  },
+  // selectRoot: {
+  //   padding: 0,
+  //   margin: 0,
+  // },
 }));
 
 const CountrySelector = ({setCountrySelected}) => {
@@ -41,7 +41,8 @@ const CountrySelector = ({setCountrySelected}) => {
 
   const handleChange = async (event) => {
     const countryCode = event.target.value;
-    SetSelectedCountry(event.target.value);
+    SetSelectedCountry(countryCode);
+    setCountrySelected(countryCode)
     const variableUrl =
       countryCode === "global"
         ? `https://disease.sh/v3/covid-19/countries`
@@ -66,7 +67,7 @@ const CountrySelector = ({setCountrySelected}) => {
             <MenuItem key={index} value={country.value}>{country.name}</MenuItem>
           ))}
         </Select>
-        <FormHelperText>Select a Country...</FormHelperText>
+        <FormHelperText style={{marginBottom: "2px"}}>Select a Country...</FormHelperText>
       </FormControl>
     </div>
   );
