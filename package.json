@@ -12,9 +12,11 @@
     "axios": "^0.20.0",
     "chart.js": "^2.9.3",
     "countup": "^1.8.2",
+    "numeral": "^2.0.6",
     "react": "^16.13.1",
     "react-chartjs-2": "^2.10.0",
     "react-countup": "^4.3.3",
+    "react-custom-scroller": "^1.0.0",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3"

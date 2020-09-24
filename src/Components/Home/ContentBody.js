@@ -62,8 +62,8 @@ const ContentBody = () => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button variant="outlined" className={classes.buttonCenter}>
-          Learn More Learn More Learn More
+        <Button variant="outlined"  className={classes.buttonCenter}>
+          Learn More About Corona Virus
         </Button>
       </CardActions>
     </Card>

@@ -12,20 +12,22 @@ import LineGraph from "./LineGraph";
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: "white",
-    height: "100%",
+    height: "max-content",
     width: "100vw",
+   
+  },
+  flexContainer: {
+
     display: "flex",
     justifyContent: "space-between",
     [theme.breakpoints.down("sm")]: {
-      //to change
-      // backgroundColor: "red",
       flexDirection: "column",
       marginLeft: 0,
     },
   },
   imgedit: {
     marginTop: 30,
-    marginBottom: 40,
+    marginBottom: 20,
     textAlign: "center",
   },
   imgChild: {
@@ -36,16 +38,17 @@ const useStyles = makeStyles((theme) => ({
   inLeftContent: {
     display: "flex",
     justifyContent: "center",
-    backgroundColor: "red",
+    // backgroundColor: "red",
     flexWrap: "wrap",
   },
   leftSide: {
     flex: 1,
-    backgroundColor: "yellow",
+    // backgroundColor: "yellow",
   },
   rightSide: {
     flex: 0.3,
-    backgroundColor: "green",
+    maxWidth: 450,
+    // backgroundColor: "white",
 
   },
   liveStatus: {
@@ -75,7 +78,7 @@ const LiveData = () => {
         ? `https://disease.sh/v3/covid-19/all`
         : `https://disease.sh/v3/covid-19/countries/${countrySelected}`;
     const apiData = await Axios.get(modUrl);
-    console.log(apiData.data);
+    // console.log(apiData.data);
     setSelectedData({
       cases: apiData.data.cases,
       todayCases: apiData.data.todayCases,
@@ -89,7 +92,7 @@ const LiveData = () => {
 
     const url = `https://disease.sh/v3/covid-19/countries`
     const tableApi = await Axios.get(url);
-    console.log("tableApi");
+    // console.log("tableApi");
     const sortData = sortedData(tableApi.data);
     setTableData(sortData);
   };
@@ -99,12 +102,13 @@ const LiveData = () => {
   }, [countrySelected]);
 
 
-  console.log("Selected Data for country" , countrySelected);
-  console.log(selectedData);
-  console.log(countrySelected);
+  // console.log("Selected Data for country" , countrySelected);
+  // console.log(selectedData);
+  // console.log(countrySelected);
 
   return (
     <div className={classes.root}>
+      <div className={classes.flexContainer}>
       <div className={classes.leftSide}>
         <div className={classes.inLeftContent}>
           <div className={classes.imgedit}>
@@ -169,6 +173,7 @@ const LiveData = () => {
         <Table data={tableData} ></Table>
 
         <LineGraph />
+      </div>
       </div>
     </div>
   );
