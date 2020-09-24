@@ -12,7 +12,7 @@ import Map from "./Map";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: "white",
+    // backgroundColor: "white",
     height: "max-content",
     width: "100vw",
     overflowX: "hidden",
@@ -47,12 +47,13 @@ const useStyles = makeStyles((theme) => ({
   },
   leftSide: {
     flex: 1,
-
+    
     // backgroundColor: "yellow",
   },
   rightSide: {
     flex: 0.3,
     maxWidth: 341,
+    backgroundColor: "white",
     [theme.breakpoints.down("md")]: {
       maxWidth: "100%",
     },
@@ -71,7 +72,7 @@ const LiveData = () => {
   const [countrySelected, setCountrySelected] = useState("global");
   const [tableData, setTableData] = useState([]);
   const [mapCenter, setMapCenter] = useState([31, -7]);
-  const [zoom, setZoom] = useState(3); //bug error cannot change along with map Center
+  // const [zoom, setZoom] = useState(3); //bug error cannot change along with map Center
   const [mapCountries, setMapCountries] = useState([]);
   const [casesType, setCasesType] = useState("cases");
 
@@ -112,7 +113,7 @@ const LiveData = () => {
 
   useEffect(() => {
     ApiInitialCountriesList();
-    
+    // eslint-disable-next-line
   }, [countrySelected]);
 
   // console.log("Selected Data for country" , countrySelected);
@@ -123,7 +124,7 @@ const LiveData = () => {
     <div className={classes.root}>
       <div className={classes.flexContainer}>
         <div className={classes.leftSide}>
-          <div className={classes.inLeftContent}>
+          {/* <div className={classes.inLeftContent}>
             <div className={classes.imgedit}>
               <img
                 src={headerImg}
@@ -131,7 +132,7 @@ const LiveData = () => {
                 alt="COVID-19"
               />
             </div>
-          </div>
+          </div> */}
 
           <div className={classes.cardHolder}>
             <Grid container justify="space-between" spacing={3}>
@@ -144,7 +145,9 @@ const LiveData = () => {
 
               <Grid item xs={12} sm={4} md={4} lg={3}>
                 <ResultCard
+                  active={casesType === "cases"}
                   onClick={(e) => setCasesType("cases")}
+                  borderColor = "red"
                   data={{
                     total: selectedData.cases,
                     today: selectedData.todayCases,
@@ -160,7 +163,9 @@ const LiveData = () => {
 
               <Grid item xs={12} sm={4} md={4} lg={3}>
                 <ResultCard
+                  active={casesType === "recovered"}
                   onClick={(e) => setCasesType("recovered")}
+                  borderColor = "greenyellow"
                   data={{
                     total: selectedData.recovered,
                     today: selectedData.todayRecovered,
@@ -176,7 +181,9 @@ const LiveData = () => {
 
               <Grid item xs={12} sm={4} md={4} lg={3}>
                 <ResultCard
+                active={casesType === "deaths"}
                   onClick={(e) => setCasesType("deaths")}
+                  borderColor = "grey"
                   data={{
                     total: selectedData.deaths,
                     today: selectedData.todayDeaths,
@@ -195,26 +202,26 @@ const LiveData = () => {
           <Map
             casesType={casesType}
             mapCountries={mapCountries}
-            zoom={zoom}
+            zoom={3}
             mapCenter={mapCenter}
           ></Map>
         </div>
         <div className={classes.rightSide}>
           <Grid container>
             <Grid container item xs={12} sm={12} md={12} lg={12}>
-              <Grid item xs={1} sm={3}  ></Grid>
+              <Grid item xs={1} sm={3}></Grid>
               <Grid item xs={10} sm={6} md={12} lg={12}>
                 <Table data={tableData}></Table>
               </Grid>
-              <Grid item xs={1} sm={3}  ></Grid>
+              <Grid item xs={1} sm={3}></Grid>
             </Grid>
 
             <Grid container item xs={12} sm={12} md={12} lg={12}>
-              <Grid item xs={1} sm={3}  ></Grid>
+              <Grid item xs={1} sm={3}></Grid>
               <Grid item xs={10} sm={6} md={12} lg={12}>
                 <LineGraph casesType={casesType} />
               </Grid>
-              <Grid item xs={1} sm={3}  ></Grid>
+              <Grid item xs={1} sm={3}></Grid>
             </Grid>
           </Grid>
         </div>

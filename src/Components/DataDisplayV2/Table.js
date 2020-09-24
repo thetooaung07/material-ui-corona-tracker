@@ -7,7 +7,7 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import CustomScroller from 'react-custom-scroller';
+
 
 import TrendingUpRoundedIcon from "@material-ui/icons/TrendingUpRounded";
 
@@ -17,7 +17,8 @@ const StyledTableCell = withStyles((theme) => ({
   },
   head: {
     backgroundColor: theme.palette.common.white,
-    borderBottom: "2px solid grey",
+    // border: "2px solid grey",
+    // borderTop: "3px solid black",
     color: theme.palette.common.black,
   },
   body: {
@@ -37,7 +38,7 @@ const StyledTableRow = withStyles((theme) => ({
 const useStyles = makeStyles({
   tablePaper: {
     // overflowY: "scroll",
-    height: 600,
+    height: 400,
     borderBottom: "10px solid #b7b7a4"
   },
   tableHead: {

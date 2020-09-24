@@ -18,12 +18,11 @@ const useStyles = makeStyles((theme) => ({
   // },
 }));
 
-const CountrySelector = ({setCountrySelected, setMapCenter}) => {
+const CountrySelector = ({ setCountrySelected, setMapCenter }) => {
   const classes = useStyles();
 
   const [selectedCountry, SetSelectedCountry] = React.useState("global");
   const [countryList, setCountryList] = useState([]);
-
 
   const ApiInitialCountriesList = async () => {
     const url = `https://disease.sh/v3/covid-19/countries`;
@@ -42,24 +41,20 @@ const CountrySelector = ({setCountrySelected, setMapCenter}) => {
   const handleChange = async (event) => {
     const countryCode = event.target.value;
     SetSelectedCountry(countryCode);
-    setCountrySelected(countryCode)
+    setCountrySelected(countryCode);
     const variableUrl =
       countryCode === "global"
         ? `https://disease.sh/v3/covid-19/countries`
         : `https://disease.sh/v3/covid-19/countries/${countryCode}`;
-      const apiData = await Axios.get(variableUrl);
-      console.log(apiData.data);
-      setMapCenter([
-        apiData.data.countryInfo.lat,
-        apiData.data.countryInfo.long
-      ]);
-      
+    const apiData = await Axios.get(variableUrl);
+    // console.log(apiData.data);
+    setMapCenter([apiData.data.countryInfo.lat, apiData.data.countryInfo.long]);
   };
 
   return (
     <div>
       <FormControl className={classes.formControl} fullWidth>
-        <Select 
+        <Select
           value={selectedCountry}
           onChange={handleChange}
           displayEmpty
@@ -68,10 +63,14 @@ const CountrySelector = ({setCountrySelected, setMapCenter}) => {
         >
           <MenuItem value="global">Global</MenuItem>
           {countryList.map((country, index) => (
-            <MenuItem key={index} value={country.value}>{country.name}</MenuItem>
+            <MenuItem key={index} value={country.value}>
+              {country.name}
+            </MenuItem>
           ))}
         </Select>
-        <FormHelperText style={{marginBottom: "2px"}}>Select a Country...</FormHelperText>
+        <FormHelperText style={{ marginBottom: "2px" }}>
+          Select a Country...
+        </FormHelperText>
       </FormControl>
     </div>
   );

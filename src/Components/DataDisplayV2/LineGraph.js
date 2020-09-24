@@ -7,15 +7,15 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyle = makeStyles((theme) => ({
   lineGraph: {
-    marginTop: 40,
+    backgroundColor: "white",
+    paddingTop: 40,
     height: 200,
     width: "100%",
-    marginBottom: 10,
-
+    paddingBottom: 10,
   },
 }));
 
-const LineGraph = ({ casesType  }) => {
+const LineGraph = ({ casesType }) => {
   const classes = useStyle();
   const [chartData, setChartData] = useState();
 
@@ -33,7 +33,6 @@ const LineGraph = ({ casesType  }) => {
     // console.log(getchartData);
     setChartData(getchartData);
   };
-
 
   const colorPicker = () => {
     if (casesType === "cases") {
@@ -57,11 +56,25 @@ const LineGraph = ({ casesType  }) => {
   useEffect(() => {
     fetchChartData();
     colorPicker();
+    // eslint-disable-next-line
   }, [casesType]);
 
   const options = {
     legend: {
       display: true,
+      position: "bottom",
+      align: "start",
+      labels: {
+        fontSize: 15,
+        fontColor: colorChanger.bodColor,
+        boxWidth: 30,
+      },
+    },
+    animation: {
+      duration: 800,
+      easing: "easeInOutQuart",
+      //  easing: "easeInOutElastic",
+      // easing: "easeOutExpo",
     },
     elements: {
       point: {
@@ -113,12 +126,13 @@ const LineGraph = ({ casesType  }) => {
     <div className={classes.lineGraph}>
       <Line
         options={options}
-        
         data={{
           datasets: [
-            
             {
+              fill: false,
+              lineTension: 0.1,
               label: `Worldwide ${casesType}`,
+
               backgroundColor: colorChanger.bgColor,
               borderColor: colorChanger.bodColor,
               data: chartData,

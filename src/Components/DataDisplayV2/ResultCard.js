@@ -5,11 +5,12 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import CountUp from "react-countup";
 import DividerWithText from "./DividerWithText";
+import Badge from "./Badge";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     // maxWidth: " 250px",
-    minWidth:156,
+    minWidth: 156,
     border: "1px solid #e5e5ea",
     boxShadow: "0 4px 4px rgba(0, 0, 0, 0.12), 0 0 10px rgba(0, 0, 0, 0.06)",
     borderRadius: "6px",
@@ -38,27 +39,35 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ResultCard = (props) => {
-  
-  const { data, onClick } = props;
+  const { data, onClick, active, borderColor } = props;
   const title = props.case;
-
   const color = props.cardColor;
 
   const classes = useStyles();
 
   return (
-    <Card className={classes.root} onClick={onClick}>
+    <Card
+      className={classes.root}
+      onClick={onClick}
+      style={{
+        borderTop: active ? ` 10px solid ${borderColor}` : "none",
+        marginTop: active ? "-5px " : "",
+      }}
+    >
       <CardContent
         className={classes.cardContentEdit}
         style={{ backgroundColor: color.bgColor }}
       >
         <Typography
           className={classes.title}
-          gutterBottom
+          
           variant="h5"
           component="h2"
         >
+          
+          <Badge color={color.bgColor}  todayCases={data.today}>
           <CountUp start={0} end={data.total} duration={2} />
+          </Badge>
         </Typography>
         <DividerWithText>
           {new Date(data.updated).toDateString()}
@@ -69,6 +78,7 @@ const ResultCard = (props) => {
           style={{ backgroundColor: color.headerColor }}
         >
           {title}
+          {/* <Badge color={color.bgColor}  todayCases={data.today}></Badge> */}
         </Typography>
       </CardContent>
     </Card>

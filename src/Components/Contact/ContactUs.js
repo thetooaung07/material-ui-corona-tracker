@@ -4,7 +4,7 @@ import React from 'react'
 const ContactUs = (props) => {
   console.log(props);
   return (
-    <div>
+    <div style={{color: "white"}}>
     <Typography variant="h2">Contact Us Page</Typography>
      
     </div>
