@@ -46,7 +46,24 @@ body::-webkit-scrollbar-thumb {
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
-  
+  overflow-y: scroll;
   /* background-color: #dbdbdb; */
 
 }
+
+/* html {
+ 
+  
+} */
+
+.Map {
+  height: 450px;
+  width: max-content;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+.Map .leaflet-container {
+  height: 100%;
+  border-radius: 12px;
+  width: 500px;
+} 

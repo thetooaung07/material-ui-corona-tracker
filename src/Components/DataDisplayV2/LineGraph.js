@@ -9,7 +9,9 @@ const useStyle = makeStyles((theme) => ({
   lineGraph: {
     marginTop: 20,
     height: 200,
+    width: "100%",
     marginBottom: 20,
+
   },
 }));
 

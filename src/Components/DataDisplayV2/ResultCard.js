@@ -38,7 +38,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ResultCard = (props) => {
-  const { data } = props;
+  
+  const { data, onClick } = props;
   const title = props.case;
 
   const color = props.cardColor;
@@ -46,7 +47,7 @@ const ResultCard = (props) => {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} onClick={onClick}>
       <CardContent
         className={classes.cardContentEdit}
         style={{ backgroundColor: color.bgColor }}

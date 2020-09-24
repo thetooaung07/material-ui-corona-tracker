@@ -12,6 +12,7 @@ import {
 import About from "./Components/About/About";
 import ContactUs from "./Components/Contact/ContactUs";
 import LiveData from "./Components/DataDisplayV2/LiveData";
+import "leaflet/dist/leaflet.css";
 
 function App() {
   return (
