@@ -46,7 +46,7 @@ const useStyles = makeStyles({
   },
 });
 
-const LiveStatus = ({ setCountrySelected }) => {
+const LiveStatus = ({ setCountrySelected,setMapCenter }) => {
   const classes = useStyles();
 
 
@@ -71,7 +71,7 @@ const LiveStatus = ({ setCountrySelected }) => {
         <Typography variant="h6" className={classes.typoEdit}>
           Stats Overview
         </Typography>
-        <CountrySelector setCountrySelected={setCountrySelected} />
+        <CountrySelector setMapCenter={setMapCenter} setCountrySelected={setCountrySelected} />
       </CardContent>
     </Card>
   );

@@ -7,20 +7,21 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyle = makeStyles((theme) => ({
   lineGraph: {
-    marginTop: 20,
+    marginTop: 40,
     height: 200,
     width: "100%",
-    marginBottom: 20,
+    marginBottom: 10,
 
   },
 }));
 
-const LineGraph = ({ casesType = "cases" }) => {
+const LineGraph = ({ casesType  }) => {
   const classes = useStyle();
   const [chartData, setChartData] = useState();
+
   const [colorChanger, setColorChanger] = useState({
-    bgColor: "red",
-    bodColor: "cyan",
+    bgColor: "",
+    bodColor: "",
   });
 
   const fetchChartData = async () => {
@@ -32,6 +33,7 @@ const LineGraph = ({ casesType = "cases" }) => {
     // console.log(getchartData);
     setChartData(getchartData);
   };
+
 
   const colorPicker = () => {
     if (casesType === "cases") {
@@ -55,11 +57,11 @@ const LineGraph = ({ casesType = "cases" }) => {
   useEffect(() => {
     fetchChartData();
     colorPicker();
-  }, []);
+  }, [casesType]);
 
   const options = {
     legend: {
-      display: false,
+      display: true,
     },
     elements: {
       point: {
@@ -111,9 +113,12 @@ const LineGraph = ({ casesType = "cases" }) => {
     <div className={classes.lineGraph}>
       <Line
         options={options}
+        
         data={{
           datasets: [
+            
             {
+              label: `Worldwide ${casesType}`,
               backgroundColor: colorChanger.bgColor,
               borderColor: colorChanger.bodColor,
               data: chartData,

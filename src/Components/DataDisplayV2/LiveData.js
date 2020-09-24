@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     overflowX: "hidden",
     paddingRight: 18,
     [theme.breakpoints.down("md")]: {
-      paddingRight: 0
+      paddingRight: 0,
     },
   },
   flexContainer: {
@@ -52,9 +52,9 @@ const useStyles = makeStyles((theme) => ({
   },
   rightSide: {
     flex: 0.3,
-    maxWidth: 500,
+    maxWidth: 341,
     [theme.breakpoints.down("md")]: {
-      maxWidth: "100%"
+      maxWidth: "100%",
     },
     // backgroundColor: "white",
   },
@@ -71,7 +71,7 @@ const LiveData = () => {
   const [countrySelected, setCountrySelected] = useState("global");
   const [tableData, setTableData] = useState([]);
   const [mapCenter, setMapCenter] = useState([31, -7]);
-  const [zoom, setZoom] = useState(3);
+  const [zoom, setZoom] = useState(3); //bug error cannot change along with map Center
   const [mapCountries, setMapCountries] = useState([]);
   const [casesType, setCasesType] = useState("cases");
 
@@ -112,6 +112,7 @@ const LiveData = () => {
 
   useEffect(() => {
     ApiInitialCountriesList();
+    
   }, [countrySelected]);
 
   // console.log("Selected Data for country" , countrySelected);
@@ -136,6 +137,7 @@ const LiveData = () => {
             <Grid container justify="space-between" spacing={3}>
               <Grid item xs={12} sm={12} md={12} lg={3}>
                 <LiveStatus
+                  setMapCenter={setMapCenter}
                   setCountrySelected={setCountrySelected}
                 ></LiveStatus>
               </Grid>
@@ -191,7 +193,7 @@ const LiveData = () => {
           </div>
 
           <Map
-            casesType="cases"
+            casesType={casesType}
             mapCountries={mapCountries}
             zoom={zoom}
             mapCenter={mapCenter}
@@ -199,16 +201,21 @@ const LiveData = () => {
         </div>
         <div className={classes.rightSide}>
           <Grid container>
-            <Grid item xs={12} sm={12} md={12} lg={12}>
-              <Table data={tableData}></Table>
+            <Grid container item xs={12} sm={12} md={12} lg={12}>
+              <Grid item xs={1} sm={3}  ></Grid>
+              <Grid item xs={10} sm={6} md={12} lg={12}>
+                <Table data={tableData}></Table>
+              </Grid>
+              <Grid item xs={1} sm={3}  ></Grid>
             </Grid>
 
-
-            <Grid item xs={12} sm={12} md={12} lg={12}>
-              <LineGraph />
+            <Grid container item xs={12} sm={12} md={12} lg={12}>
+              <Grid item xs={1} sm={3}  ></Grid>
+              <Grid item xs={10} sm={6} md={12} lg={12}>
+                <LineGraph casesType={casesType} />
+              </Grid>
+              <Grid item xs={1} sm={3}  ></Grid>
             </Grid>
-
-            
           </Grid>
         </div>
       </div>

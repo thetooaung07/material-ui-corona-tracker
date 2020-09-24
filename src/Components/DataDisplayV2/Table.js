@@ -37,7 +37,7 @@ const StyledTableRow = withStyles((theme) => ({
 const useStyles = makeStyles({
   tablePaper: {
     // overflowY: "scroll",
-    height: 450,
+    height: 600,
     borderBottom: "10px solid #b7b7a4"
   },
   tableHead: {

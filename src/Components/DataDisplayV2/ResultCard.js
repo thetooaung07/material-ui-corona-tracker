@@ -9,7 +9,7 @@ import DividerWithText from "./DividerWithText";
 const useStyles = makeStyles((theme) => ({
   root: {
     // maxWidth: " 250px",
-    // minWidth: " 250px",
+    minWidth:156,
     border: "1px solid #e5e5ea",
     boxShadow: "0 4px 4px rgba(0, 0, 0, 0.12), 0 0 10px rgba(0, 0, 0, 0.06)",
     borderRadius: "6px",

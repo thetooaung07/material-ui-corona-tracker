@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   // },
 }));
 
-const CountrySelector = ({setCountrySelected}) => {
+const CountrySelector = ({setCountrySelected, setMapCenter}) => {
   const classes = useStyles();
 
   const [selectedCountry, SetSelectedCountry] = React.useState("global");
@@ -49,6 +49,10 @@ const CountrySelector = ({setCountrySelected}) => {
         : `https://disease.sh/v3/covid-19/countries/${countryCode}`;
       const apiData = await Axios.get(variableUrl);
       console.log(apiData.data);
+      setMapCenter([
+        apiData.data.countryInfo.lat,
+        apiData.data.countryInfo.long
+      ]);
       
   };
 
