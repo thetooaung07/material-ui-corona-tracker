@@ -9,7 +9,7 @@ const useStyle = makeStyles((theme) => ({
   lineGraph: {
     backgroundColor: "white",
     paddingTop: 40,
-    height: 200,
+    height: 300,
     width: "100%",
     paddingBottom: 10,
   },

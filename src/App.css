@@ -7,7 +7,7 @@
   background-image: url(../src/img/covidbg.jpg);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 100vw 100vh;
+  background-size: cover;
   position: relative;
   max-width: 100vw;
   height: 100vh;
@@ -28,6 +28,7 @@
 .Map .leaflet-container {
   height: 100%;
   border-radius: 12px;
+  border: 2px solid white;
   width: 500px;
 }
 
