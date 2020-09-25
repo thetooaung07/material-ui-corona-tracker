@@ -39,7 +39,7 @@ const useStyles = makeStyles({
   tablePaper: {
     
     // overflowY: "scroll",
-    height: 400,
+    height: 700,
     borderBottom: "5px solid #b7b7a4"
   },
   tableHead: {
