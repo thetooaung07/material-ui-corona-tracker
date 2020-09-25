@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
   },
   leftSide: {
     flex: 1,
-    
+
     // backgroundColor: "yellow",
   },
   rightSide: {
@@ -211,7 +211,7 @@ const LiveData = () => {
             <Map
               casesType={casesType}
               mapCountries={mapCountries}
-              zoom={3}
+              zoom={4}
               mapCenter={mapCenter}
             ></Map>
 
@@ -229,20 +229,16 @@ const LiveData = () => {
 <LineGraph casesType={casesType} /> */}
 
         <div className={classes.rightSide}>
-
-        <Grid container>
+          <Grid container>
             <Grid container item xs={12} sm={12} md={12} lg={12}>
               <Grid item xs={1} sm={3}></Grid>
               <Grid item xs={10} sm={6} md={12} lg={12}>
-               <Table data={tableData}></Table>
+                <Table data={tableData}></Table>
               </Grid>
               <Grid item xs={1} sm={3}></Grid>
-            </Grid> 
-        </Grid>
-        
+            </Grid>
+          </Grid>
 
-
-          
           {/* <Grid container>
             <Grid container item xs={12} sm={12} md={12} lg={12}>
               <Grid item xs={1} sm={3}></Grid>

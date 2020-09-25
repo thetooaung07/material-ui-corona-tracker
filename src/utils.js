@@ -3,13 +3,13 @@ import numeral from "numeral";
 import { Circle, Popup } from "react-leaflet";
 
 export const sortedData = (data) => {
-  const toSortData = [...data]
-  return toSortData.sort((a,b) => b.cases - a.cases);
-}
+  const toSortData = [...data];
+  return toSortData.sort((a, b) => b.cases - a.cases);
+};
 
-export const ChartDataConfig = (data, casesType ) => {
+export const ChartDataConfig = (data, casesType) => {
   let chartData = [];
-  let lastDataPoint; 
+  let lastDataPoint;
   for (let date in data[casesType]) {
     if (lastDataPoint) {
       let newDataPoint = {
@@ -21,7 +21,7 @@ export const ChartDataConfig = (data, casesType ) => {
     lastDataPoint = data[casesType][date];
   }
   return chartData;
-}
+};
 
 const casesTypeColors = {
   cases: {
@@ -46,7 +46,8 @@ const casesTypeColors = {
 
 export const showDataOnMap = (data, casesType) =>
   data.map((country, index) => (
-    <Circle key={index}
+    <Circle
+      key={index}
       center={[country.countryInfo.lat, country.countryInfo.long]}
       fillOpacity={0.4}
       color={casesTypeColors[casesType].hex}

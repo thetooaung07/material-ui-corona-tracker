@@ -8,12 +8,11 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 
-
 import TrendingUpRoundedIcon from "@material-ui/icons/TrendingUpRounded";
 
 const StyledTableCell = withStyles((theme) => ({
   root: {
-    padding: "10px 5px 10px 10px"
+    padding: "10px 5px 10px 10px",
   },
   head: {
     backgroundColor: theme.palette.common.white,
@@ -37,10 +36,9 @@ const StyledTableRow = withStyles((theme) => ({
 
 const useStyles = makeStyles({
   tablePaper: {
-    
     // overflowY: "scroll",
-    height: 700,
-    borderBottom: "5px solid #b7b7a4"
+    height: 690,
+    borderBottom: "5px solid #b7b7a4",
   },
   tableHead: {
     backgroundColor: "red",
@@ -69,7 +67,6 @@ const Table = ({ data }) => {
 
   return (
     <TableContainer component={Paper} className={classes.tablePaper}>
-    
       <MuiTable stickyHeader className={classes.table}>
         <TableHead>
           <TableRow>
@@ -84,7 +81,6 @@ const Table = ({ data }) => {
         <TableBody>
           {data.map((row, index) => (
             <StyledTableRow key={index}>
-            
               <StyledTableCell component="th" scope="row">
                 {row.country}
               </StyledTableCell>
@@ -93,7 +89,6 @@ const Table = ({ data }) => {
           ))}
         </TableBody>
       </MuiTable>
-      
     </TableContainer>
   );
 };
