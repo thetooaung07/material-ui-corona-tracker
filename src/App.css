@@ -15,7 +15,6 @@
   flex-direction: column;
   overflow-x: hidden;
   overflow-y: scroll;
-  /* background-color: #dbdbdb; */
 }
 
 .wrapper {
@@ -29,18 +28,19 @@
 .Map {
   height: 450px;
   width: max-content;
+  margin: 10px;
+  margin-bottom: 15px;
 }
 .Map .leaflet-container {
   height: 100%;
   border-radius: 12px;
   border: 2px solid white;
   width: 500px;
-  margin-bottom: 25px;
 }
 .Popup_flag {
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover; /* Resize the background image to cover the entire container */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .Popup_flag img {

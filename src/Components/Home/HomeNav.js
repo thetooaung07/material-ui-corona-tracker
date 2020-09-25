@@ -14,6 +14,10 @@ import { useHistory } from "react-router-dom";
 const useStyle = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexWrap: "wrap",
   },
   menuButton: {
     justifyContent: "center",
@@ -21,6 +25,9 @@ const useStyle = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
+    [theme.breakpoints.down("sm")]: {
+      textAlign: "center",
+    },
   },
   appbar: {
     backgroundColor: "rgba(158,158,158,0.5)",
@@ -28,6 +35,16 @@ const useStyle = makeStyles((theme) => ({
   tabWidth: {
     minWidth: "125px",
     maxWidth: " 125px ",
+    [theme.breakpoints.down("sm")]: {
+      minWidth: "25%",
+      maxWidth: " 100% ",
+    },
+  },
+  tabRes: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexWrap: "wrap",
   },
 }));
 
@@ -65,7 +82,7 @@ const HomeNav = () => {
   return (
     <div className={classes.root}>
       <AppBar className={classes.appbar} position="static">
-        <Toolbar>
+        <Toolbar className={classes.tabRes}>
           <div className={classes.title}>
             <Button
               className={classes.menuButton}
@@ -79,7 +96,11 @@ const HomeNav = () => {
               </Typography>
             </Button>
           </div>
-          <Tabs value={tabSelect} onChange={handleChange}>
+          <Tabs
+            value={tabSelect}
+            onChange={handleChange}
+            className={classes.tabRes}
+          >
             <Tab className={classes.tabWidth} value={1} label="Home" />
             <Tab className={classes.tabWidth} value={2} label="Live Data" />
             <Tab className={classes.tabWidth} value={3} label="About" />

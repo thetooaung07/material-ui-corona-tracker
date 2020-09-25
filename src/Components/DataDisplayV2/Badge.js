@@ -1,7 +1,7 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 import {Badge as MuiBadge, withStyles} from '@material-ui/core';
-import GroupAddRoundedIcon from '@material-ui/icons/GroupAddRounded';
+// import GroupAddRoundedIcon from '@material-ui/icons/GroupAddRounded';
 const StyledBadge = withStyles((theme) => ({
   badge: {
     right: -13,
@@ -12,11 +12,7 @@ const StyledBadge = withStyles((theme) => ({
 }))(MuiBadge);
 
 const Badge = (props) => {
-  const {todayCases, color} = props
-  console.log(color);
-
-  // const classes = useStyles();
-
+  const {todayCases} = props
   return (
     <span >
       <StyledBadge showZero max={999} badgeContent={`+${todayCases}`}  color="error"  >

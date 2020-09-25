@@ -7,12 +7,15 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyle = makeStyles((theme) => ({
   lineGraph: {
-    backgroundColor: "whitesmoke",
+    backgroundColor: "#fafafa",
     height: 450,
     width: 500,
     borderRadius: 12,
-   padding: 10,
-   paddingRight: 20
+    padding: 10,
+    paddingTop: 20,
+    paddingRight: 20,
+    margin: 10,
+    marginBottom: 15,
   },
 }));
 
@@ -49,7 +52,7 @@ const LineGraph = ({ casesType }) => {
     } else {
       setColorChanger({
         bgColor: "grey",
-        bodColor: "black",
+        bodColor: " rgba(40, 40, 40, 0.908)",
       });
     }
   };

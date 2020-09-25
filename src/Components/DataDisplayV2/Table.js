@@ -16,8 +16,6 @@ const StyledTableCell = withStyles((theme) => ({
   },
   head: {
     backgroundColor: theme.palette.common.white,
-    // border: "2px solid grey",
-    // borderTop: "3px solid black",
     color: theme.palette.common.black,
   },
   body: {
@@ -36,9 +34,9 @@ const StyledTableRow = withStyles((theme) => ({
 
 const useStyles = makeStyles({
   tablePaper: {
-    // overflowY: "scroll",
-    height: 690,
+    height: 705,
     borderBottom: "5px solid #b7b7a4",
+    // marginBottom: 10,
   },
   tableHead: {
     backgroundColor: "red",

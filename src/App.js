@@ -16,14 +16,7 @@ import "leaflet/dist/leaflet.css";
 import Footer from "./Components/Home/Footer";
 
 function App() {
-  const setHeight = () => {
-    const body = document.documentElement.clientHeight;
-    const heightOfnav = document.getElementById("home-nav").clientHeight;
-
-    // const wrapper = document.getElementById("wrapper");
-    // wrapper.style.maxHeight = body - nav1 - 5 + "px";
-    // wrapper.style.minHeight = body - nav1 - 5 + "px";
-  };
+  
 
   return (
     <div className="App">
