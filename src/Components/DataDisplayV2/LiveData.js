@@ -17,9 +17,9 @@ const useStyles = makeStyles((theme) => ({
     width: "100vw",
     overflowX: "hidden",
     paddingRight: 18,
-    [theme.breakpoints.down("md")]: {
-      paddingRight: 0,
-    },
+    // [theme.breakpoints.down("md")]: {
+    //   paddingRight: 0,
+    // },
   },
   flexContainer: {
     display: "flex",
@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
   },
   leftSide: {
     flex: 1,
-    
+
     // backgroundColor: "yellow",
   },
   rightSide: {
@@ -63,6 +63,14 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 20,
   },
   cardHolder: {
+    margin: 20,
+    // marginBottom: 40
+  },
+  mapTableContainer: {
+    display: "flex",
+    justifyContent: "space-evenly",
+    alignItems: "center",
+    flexWrap: "wrap",
     margin: 20,
   },
 }));
@@ -147,7 +155,7 @@ const LiveData = () => {
                 <ResultCard
                   active={casesType === "cases"}
                   onClick={(e) => setCasesType("cases")}
-                  borderColor = "red"
+                  borderColor="red"
                   data={{
                     total: selectedData.cases,
                     today: selectedData.todayCases,
@@ -165,7 +173,7 @@ const LiveData = () => {
                 <ResultCard
                   active={casesType === "recovered"}
                   onClick={(e) => setCasesType("recovered")}
-                  borderColor = "greenyellow"
+                  borderColor="greenyellow"
                   data={{
                     total: selectedData.recovered,
                     today: selectedData.todayRecovered,
@@ -181,9 +189,9 @@ const LiveData = () => {
 
               <Grid item xs={12} sm={4} md={4} lg={3}>
                 <ResultCard
-                active={casesType === "deaths"}
+                  active={casesType === "deaths"}
                   onClick={(e) => setCasesType("deaths")}
-                  borderColor = "grey"
+                  borderColor="grey"
                   data={{
                     total: selectedData.deaths,
                     today: selectedData.todayDeaths,
@@ -199,13 +207,27 @@ const LiveData = () => {
             </Grid>
           </div>
 
-          <Map
-            casesType={casesType}
-            mapCountries={mapCountries}
-            zoom={3}
-            mapCenter={mapCenter}
-          ></Map>
+          <div className={classes.mapTableContainer}>
+            <Map
+              casesType={casesType}
+              mapCountries={mapCountries}
+              zoom={4}
+              mapCenter={mapCenter}
+            ></Map>
+
+            <LineGraph casesType={casesType} />
+          </div>
         </div>
+
+        {/* <Map
+                  casesType={casesType}
+                  mapCountries={mapCountries}
+                  zoom={3}
+                  mapCenter={mapCenter}
+                ></Map>
+
+<LineGraph casesType={casesType} /> */}
+
         <div className={classes.rightSide}>
           <Grid container>
             <Grid container item xs={12} sm={12} md={12} lg={12}>
@@ -215,15 +237,25 @@ const LiveData = () => {
               </Grid>
               <Grid item xs={1} sm={3}></Grid>
             </Grid>
+          </Grid>
 
+          {/* <Grid container>
             <Grid container item xs={12} sm={12} md={12} lg={12}>
+              <Grid item xs={1} sm={3}></Grid>
+              <Grid item xs={10} sm={6} md={12} lg={12}>
+               
+              </Grid>
+              <Grid item xs={1} sm={3}></Grid>
+            </Grid> 
+
+             <Grid container item xs={12} sm={12} md={12} lg={12}>
               <Grid item xs={1} sm={3}></Grid>
               <Grid item xs={10} sm={6} md={12} lg={12}>
                 <LineGraph casesType={casesType} />
               </Grid>
               <Grid item xs={1} sm={3}></Grid>
-            </Grid>
-          </Grid>
+            </Grid> 
+           </Grid> */}
         </div>
       </div>
     </div>

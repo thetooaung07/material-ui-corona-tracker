@@ -7,11 +7,12 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyle = makeStyles((theme) => ({
   lineGraph: {
-    backgroundColor: "white",
-    paddingTop: 40,
-    height: 300,
-    width: "100%",
-    paddingBottom: 10,
+    backgroundColor: "whitesmoke",
+    height: 450,
+    width: 500,
+    borderRadius: 12,
+   padding: 10,
+   paddingRight: 20
   },
 }));
 
@@ -102,6 +103,9 @@ const LineGraph = ({ casesType }) => {
             parser: "MM/DD/YY", //according to chrome warning
             tooltipFormat: "ll",
           },
+          ticks: {
+            fontColor: colorChanger.bodColor,
+          },
         },
       ],
       yAxes: [
@@ -110,6 +114,7 @@ const LineGraph = ({ casesType }) => {
             display: false,
           },
           ticks: {
+            fontColor: colorChanger.bodColor,
             // beginAtZero: true,
             // Include a dollar sign in the ticks
             callback: function (value, index, values) {

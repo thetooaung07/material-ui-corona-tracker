@@ -18,22 +18,34 @@
   /* background-color: #dbdbdb; */
 }
 
+.wrapper {
+  height: max-content;
+}
+
+.wrapper-sub {
+  height: calc(100vh - 64px);
+}
+
 .Map {
   height: 450px;
   width: max-content;
-  margin: 0 auto;
-  margin-top: 30px;
-  margin-bottom: 75px;
 }
 .Map .leaflet-container {
   height: 100%;
   border-radius: 12px;
   border: 2px solid white;
   width: 500px;
+  margin-bottom: 25px;
+}
+.Popup_flag {
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
 }
 
 .Popup_flag img {
   width: 100px;
+  height: 100%;
   border-radius: 5px;
 }
 
