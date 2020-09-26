@@ -70,14 +70,17 @@ const HomeNav = () => {
     IndextoTabName[locationName]
   );
 
-  useEffect(() => {
-    setTabSelect(IndextoTabName[locationName])
-  },[location])
+  // useEffect(() => {
+  //   console.log();
+  // //   const location = window.location.href;
+  // //   const locationName = location.split("/")[3];
+  // //  setTabSelect(IndextoTabName[locationName])
+  //   console.log("I am in useEffect");
+  // //  console.log(IndextoTabName[locationName]);
+  // },[locationName])
 
   const handleChange = (event, newValue) => {
-    // console.log(newValue);
     history.push(`/${tabNametoIndex[newValue]}`);
-    // console.log(tabNametoIndex[newValue]);
     setTabSelect(newValue);
   };
   // console.log(tabSelect);
