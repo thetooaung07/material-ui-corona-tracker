@@ -9,6 +9,7 @@ import Table from "./Table";
 import { sortedData } from "../../utils";
 import LineGraph from "./LineGraph";
 import Map from "./Map";
+import Loader from "../Home/Loader";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -78,10 +79,11 @@ const useStyles = makeStyles((theme) => ({
 
 const LiveData = () => {
   const classes = useStyles();
+  const [isLoading, setisLoading] = useState(true);
   const [countrySelected, setCountrySelected] = useState("global");
   const [tableData, setTableData] = useState([]);
   const [mapCenter, setMapCenter] = useState([31, -7]);
-  // const [zoom, setZoom] = useState(3); //bug error cannot change along with map Center
+  // const [zoom, setZoom] = useState(3); // bug error cannot change along with map Center
   const [mapCountries, setMapCountries] = useState([]);
   const [casesType, setCasesType] = useState("cases");
 
@@ -115,7 +117,6 @@ const LiveData = () => {
     const url = `https://disease.sh/v3/covid-19/countries`;
     const tableApi = await Axios.get(url);
     setMapCountries(tableApi.data);
-    // console.log("tableApi");
     const sortData = sortedData(tableApi.data);
     setTableData(sortData);
   };
@@ -125,15 +126,24 @@ const LiveData = () => {
     // eslint-disable-next-line
   }, [countrySelected]);
 
-  // console.log("Selected Data for country" , countrySelected);
-  // console.log(selectedData);
-  // console.log(countrySelected);
+
+  // Timer to show Loader 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setisLoading(false);
+    }, 750);
+    return () => clearTimeout(timer);
+  }, []);
+
 
   return (
     <div className={classes.root}>
-      <div className={classes.flexContainer}>
-        <div className={classes.leftSide}>
-          {/* <div className={classes.inLeftContent}>
+      {isLoading ? (
+        <Loader open={isLoading}></Loader>
+      ) : (
+        <div className={classes.flexContainer}>
+          <div className={classes.leftSide}>
+            {/* <div className={classes.inLeftContent}>
             <div className={classes.imgedit}>
               <img
                 src={headerImg}
@@ -143,97 +153,96 @@ const LiveData = () => {
             </div>
           </div> */}
 
-          <div className={classes.cardHolder}>
-            <Grid container justify="space-between" spacing={3}>
-              <Grid item xs={12} sm={12} md={12} lg={3}>
-                <LiveStatus
-                  setMapCenter={setMapCenter}
-                  setCountrySelected={setCountrySelected}
-                ></LiveStatus>
-              </Grid>
+            <div className={classes.cardHolder}>
+              <Grid container justify="space-between" spacing={3}>
+                <Grid item xs={12} sm={12} md={12} lg={3}>
+                  <LiveStatus
+                    setMapCenter={setMapCenter}
+                    setCountrySelected={setCountrySelected}
+                  ></LiveStatus>
+                </Grid>
 
-              <Grid item xs={12} sm={4} md={4} lg={3}>
-                <ResultCard
-                  active={casesType === "cases"}
-                  onClick={(e) => setCasesType("cases")}
-                  borderColor="#CC1034"
-                  data={{
-                    total: selectedData.cases,
-                    today: selectedData.todayCases,
-                    updated: selectedData.updated,
-                  }}
-                  case="CONFIRMED"
-                  cardColor={{
-                    bgColor: "rgb(255,245,245)",
-                    headerColor: "rgb(254,215,215)",
-                  }}
-                />
-              </Grid>
+                <Grid item xs={12} sm={4} md={4} lg={3}>
+                  <ResultCard
+                    active={casesType === "cases"}
+                    onClick={(e) => setCasesType("cases")}
+                    borderColor="#CC1034"
+                    data={{
+                      total: selectedData.cases,
+                      today: selectedData.todayCases,
+                      updated: selectedData.updated,
+                    }}
+                    case="CONFIRMED"
+                    cardColor={{
+                      bgColor: "rgb(255,245,245)",
+                      headerColor: "rgb(254,215,215)",
+                    }}
+                  />
+                </Grid>
 
-              <Grid item xs={12} sm={4} md={4} lg={3}>
-                <ResultCard
-                  active={casesType === "recovered"}
-                  onClick={(e) => setCasesType("recovered")}
-                  borderColor="#7dd71d"
-                  data={{
-                    total: selectedData.recovered,
-                    today: selectedData.todayRecovered,
-                    updated: selectedData.updated,
-                  }}
-                  case="RECOVERY"
-                  cardColor={{
-                    bgColor: "rgb(240,255,244)",
-                    headerColor: "rgb(198,246,213)",
-                  }}
-                />
-              </Grid>
+                <Grid item xs={12} sm={4} md={4} lg={3}>
+                  <ResultCard
+                    active={casesType === "recovered"}
+                    onClick={(e) => setCasesType("recovered")}
+                    borderColor="#7dd71d"
+                    data={{
+                      total: selectedData.recovered,
+                      today: selectedData.todayRecovered,
+                      updated: selectedData.updated,
+                    }}
+                    case="RECOVERY"
+                    cardColor={{
+                      bgColor: "rgb(240,255,244)",
+                      headerColor: "rgb(198,246,213)",
+                    }}
+                  />
+                </Grid>
 
-              <Grid item xs={12} sm={4} md={4} lg={3}>
-                <ResultCard
-                  active={casesType === "deaths"}
-                  onClick={(e) => setCasesType("deaths")}
-                  borderColor="grey"
-                  data={{
-                    total: selectedData.deaths,
-                    today: selectedData.todayDeaths,
-                    updated: selectedData.updated,
-                  }}
-                  case="DEATHS"
-                  cardColor={{
-                    bgColor: "rgba(237, 242, 247, 0.626)",
-                    headerColor: "rgb(226,232,240)",
-                  }}
-                />
+                <Grid item xs={12} sm={4} md={4} lg={3}>
+                  <ResultCard
+                    active={casesType === "deaths"}
+                    onClick={(e) => setCasesType("deaths")}
+                    borderColor="grey"
+                    data={{
+                      total: selectedData.deaths,
+                      today: selectedData.todayDeaths,
+                      updated: selectedData.updated,
+                    }}
+                    case="DEATHS"
+                    cardColor={{
+                      bgColor: "rgba(237, 242, 247, 0.626)",
+                      headerColor: "rgb(226,232,240)",
+                    }}
+                  />
+                </Grid>
+              </Grid>
+            </div>
+
+            <div className={classes.mapTableContainer}>
+              <Map
+                casesType={casesType}
+                mapCountries={mapCountries}
+                zoom={4}
+                mapCenter={mapCenter}
+              ></Map>
+
+              <LineGraph casesType={casesType} />
+            </div>
+          </div>
+
+          <div className={classes.rightSide}>
+            <Grid container>
+              <Grid container item xs={12} sm={12} md={12} lg={12}>
+                <Grid item xs={1} sm={3}></Grid>
+                <Grid item xs={10} sm={6} md={12} lg={12}>
+                  <Table data={tableData}></Table>
+                </Grid>
+                <Grid item xs={1} sm={3}></Grid>
               </Grid>
             </Grid>
           </div>
-
-          <div className={classes.mapTableContainer}>
-          
-            <Map
-              casesType={casesType}
-              mapCountries={mapCountries}
-              zoom={4}
-              mapCenter={mapCenter}
-            ></Map>
-
-            <LineGraph casesType={casesType} />
-          </div>
         </div>
-
-        <div className={classes.rightSide}>
-          <Grid container>
-            <Grid container item xs={12} sm={12} md={12} lg={12}>
-              <Grid item xs={1} sm={3}></Grid>
-              <Grid item xs={10} sm={6} md={12} lg={12}>
-                <Table data={tableData}></Table>
-              </Grid>
-              <Grid item xs={1} sm={3}></Grid>
-            </Grid>
-          </Grid>
-
-        </div>
-      </div>
+      )}
     </div>
   );
 };

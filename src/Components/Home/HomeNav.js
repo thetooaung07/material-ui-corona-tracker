@@ -61,24 +61,27 @@ const HomeNav = () => {
     about: 3,
     contact: 4,
   };
+
   const location = window.location.href;
   const locationName = location.split("/")[3];
-  // console.log(locationName);
-
   const history = useHistory();
   const classes = useStyle();
   const [tabSelect, setTabSelect] = React.useState(
     IndextoTabName[locationName]
   );
-  // console.log(window.location.href);
-  // console.log(tabSelect);
 
-  useEffect(() => {}, [tabSelect]);
+  useEffect(() => {
+    setTabSelect(IndextoTabName[locationName])
+  },[location])
+
   const handleChange = (event, newValue) => {
+    // console.log(newValue);
     history.push(`/${tabNametoIndex[newValue]}`);
+    // console.log(tabNametoIndex[newValue]);
     setTabSelect(newValue);
   };
   // console.log(tabSelect);
+
   return (
     <div className={classes.root}>
       <AppBar className={classes.appbar} position="static">
@@ -96,8 +99,9 @@ const HomeNav = () => {
               </Typography>
             </Button>
           </div>
+
           <Tabs
-            value={tabSelect}
+            value={tabSelect ? tabSelect : 1}
             onChange={handleChange}
             className={classes.tabRes}
           >

@@ -2,25 +2,40 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Box, Typography } from "@material-ui/core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebookF, faInstagram, faTwitter, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
+import {
+  faFacebookF,
+  faInstagram,
+  faTwitter,
+  faLinkedinIn,
+} from "@fortawesome/free-brands-svg-icons";
 
-const useStyle = makeStyles({
+const useStyle = makeStyles((theme) => ({
   footerStyle: {
-    height: 50,
+    // position: "fixed",
+    // bottom: 0, 
+    // left: 0,
+    // right: 0,
+    // minHeight: 50,
     // backgroundColor: " rgba(158,158,158,0.5)",
     backgroundColor: "#4b5d67",
     color: "white",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
+    [theme.breakpoints.down("xs")]: {
+      flexDirection: "column",
+    },
   },
   flexIcon: {
     flex: 0.4,
     display: "flex",
     justifyContent: "space-evenly",
     alignItems: "center",
+    "& > *" : {
+      marginRight: theme.spacing(3)
+    }
   },
-});
+}));
 
 const Footer = () => {
   const classes = useStyle();
@@ -31,14 +46,20 @@ const Footer = () => {
           Copyright&thinsp;&copy;&thinsp;2020. All right reserved to xxXXXxx
         </Box>
       </Typography>
-      <Typography variant="subtitle1" className={classes.flexIcon} style={{ paddingRight: "20px" }}>
-        Contact us 
-        
+
+      <div className={classes.flexIcon}>
+        <Typography
+          variant="subtitle1"
+          style={{ whiteSpace: "nowrap"}}
+        >
+          Contact us
+        </Typography>
+      
         <FontAwesomeIcon icon={faFacebookF} />
         <FontAwesomeIcon icon={faInstagram} />
         <FontAwesomeIcon icon={faTwitter} />
         <FontAwesomeIcon icon={faLinkedinIn} />
-      </Typography>
+      </div>
     </div>
   );
 };

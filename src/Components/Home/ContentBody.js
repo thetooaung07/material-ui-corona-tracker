@@ -56,7 +56,7 @@ const ContentBody = () => {
             variant="h3"
             gutterBottom
           >
-            Corona-Header
+            Corona-Virus
           </Typography>
           <Typography variant="h6" component="h6" className={classes.cardBody}>
             Coronavirus disease (COVID-19) is an infectious disease caused by a
