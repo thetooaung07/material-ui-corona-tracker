@@ -126,15 +126,13 @@ const LiveData = () => {
     // eslint-disable-next-line
   }, [countrySelected]);
 
-
-  // Timer to show Loader 
+  // Timer to show Loader
   useEffect(() => {
     const timer = setTimeout(() => {
       setisLoading(false);
     }, 750);
     return () => clearTimeout(timer);
   }, []);
-
 
   return (
     <div className={classes.root}>

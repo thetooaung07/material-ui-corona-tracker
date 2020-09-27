@@ -36,7 +36,7 @@ const useStyles = makeStyles({
   tablePaper: {
     height: 705,
     borderBottom: "5px solid #b7b7a4",
-    // marginBottom: 10,
+     marginBottom: 10,
   },
   tableHead: {
     backgroundColor: "red",

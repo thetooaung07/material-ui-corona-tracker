@@ -12,12 +12,13 @@ import {
 const useStyle = makeStyles((theme) => ({
   footerStyle: {
     // position: "fixed",
-    // bottom: 0, 
+    // bottom: 0,
     // left: 0,
     // right: 0,
-    // minHeight: 50,
+     minHeight: 70,
     // backgroundColor: " rgba(158,158,158,0.5)",
-    backgroundColor: "#4b5d67",
+    // backgroundColor: "#4b5d67",
+    backgroundColor: " #931a25",
     color: "white",
     display: "flex",
     justifyContent: "space-between",
@@ -31,9 +32,9 @@ const useStyle = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-evenly",
     alignItems: "center",
-    "& > *" : {
-      marginRight: theme.spacing(3)
-    }
+    "& > *": {
+      marginRight: theme.spacing(3),
+    },
   },
 }));
 
@@ -43,18 +44,15 @@ const Footer = () => {
     <div className={classes.footerStyle}>
       <Typography variant="subtitle1" style={{ paddingLeft: "20px" }}>
         <Box fontFamily="Monospace" fontSize="h6.fontSize">
-          Copyright&thinsp;&copy;&thinsp;2020. All right reserved to xxXXXxx
+          Copyright&thinsp;&copy;&thinsp;2020. All right reserved.
         </Box>
       </Typography>
 
       <div className={classes.flexIcon}>
-        <Typography
-          variant="subtitle1"
-          style={{ whiteSpace: "nowrap"}}
-        >
+        <Typography variant="subtitle1" style={{ whiteSpace: "nowrap" }}>
           Contact us
         </Typography>
-      
+
         <FontAwesomeIcon icon={faFacebookF} />
         <FontAwesomeIcon icon={faInstagram} />
         <FontAwesomeIcon icon={faTwitter} />
