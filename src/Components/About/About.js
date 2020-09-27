@@ -4,9 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import AboutCard from "./AboutCard";
 
 const useStyle = makeStyles((theme) => ({
-  rootContainer: {
-
-  }
+  rootContainer: {},
 }));
 
 const About = () => {
@@ -14,22 +12,20 @@ const About = () => {
 
   return (
     <div className={`About wrapper-sub ${classes.rootContainer}`}>
-      
-        <Grid container justify="center" alignItems="center">
-          <Grid item xs={12} sm={6} md={4} >
-            <AboutCard></AboutCard>
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <AboutCard></AboutCard>
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <AboutCard></AboutCard>
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <AboutCard></AboutCard>
-          </Grid>
-        </Grid> 
-      
+      <Grid container justify="center" alignItems="center">
+        <Grid item xs={12} sm={6} md={4}>
+          <AboutCard/>
+        </Grid>
+        <Grid item xs={12} sm={6} md={4}>
+          <AboutCard></AboutCard>
+        </Grid>
+        <Grid item xs={12} sm={6} md={4}>
+          <AboutCard></AboutCard>
+        </Grid>
+        <Grid item xs={12} sm={6} md={4}>
+          <AboutCard></AboutCard>
+        </Grid>
+      </Grid>
     </div>
   );
 };

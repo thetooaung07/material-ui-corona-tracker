@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
   AppBar,
   Toolbar,
@@ -70,14 +70,7 @@ const HomeNav = () => {
     IndextoTabName[locationName]
   );
 
-  // useEffect(() => {
-  //   console.log();
-  // //   const location = window.location.href;
-  // //   const locationName = location.split("/")[3];
-  // //  setTabSelect(IndextoTabName[locationName])
-  //   console.log("I am in useEffect");
-  // //  console.log(IndextoTabName[locationName]);
-  // },[locationName])
+
 
   const handleChange = (event, newValue) => {
     history.push(`/${tabNametoIndex[newValue]}`);
