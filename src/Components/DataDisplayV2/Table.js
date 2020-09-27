@@ -12,7 +12,7 @@ import TrendingUpRoundedIcon from "@material-ui/icons/TrendingUpRounded";
 
 const StyledTableCell = withStyles((theme) => ({
   root: {
-    padding: "10px 5px 10px 10px",
+    padding: "10px 10px 10px 10px",
   },
   head: {
     backgroundColor: theme.palette.common.white,

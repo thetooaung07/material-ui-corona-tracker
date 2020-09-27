@@ -6,15 +6,18 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme =>({
   root: {
-    minWidth: 200,
-    maxWidth: 350,
+   
+    maxWidth: 300,
     boxShadow: "0 4px 4px rgba(0, 0, 0, 0.12), 0 0 10px rgba(0, 0, 0, 0.06)",
     borderRadius: "6px",
     margin: "0 auto",
     marginBottom: 20,
     marginTop: 20,
+    [theme.breakpoints.down("md")]: {
+      maxWidth: 225,
+    },
   },
   bullet: {
     display: "inline-block",
@@ -27,7 +30,7 @@ const useStyles = makeStyles({
   pos: {
     marginBottom: 12,
   },
-});
+}));
 
 const AboutCard = () => {
   const classes = useStyles();
