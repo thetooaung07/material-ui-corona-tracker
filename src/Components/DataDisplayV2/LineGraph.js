@@ -16,6 +16,11 @@ const useStyle = makeStyles((theme) => ({
     paddingRight: 20,
     margin: 10,
     marginBottom: 15,
+    [theme.breakpoints.down("xs")]: {
+      height: 300,
+      width: "90%",
+      minWidth: "300px"
+    }
   },
 }));
 

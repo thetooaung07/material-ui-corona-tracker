@@ -8,13 +8,21 @@ const useStyle = makeStyles((theme) => ({
     width: "70%",
     margin: "0 auto",
   },
+  widthChanger: {
+    [theme.breakpoints.down("md")]: {
+      height: "max-content",
+    },
+    [theme.breakpoints.up("sm")]: {
+      height: "calc(100vh - 64px)",
+    },
+  },
 }));
 
 const About = () => {
   const classes = useStyle();
 
   return (
-    <div className={` About wrapper-sub`}>
+    <div className={`${classes.widthChanger} About wrapper-sub`}>
       <div className={classes.rootContainer}>
         <Grid container>
           <Grid item xs={12} sm={6} md={6} lg={4}>

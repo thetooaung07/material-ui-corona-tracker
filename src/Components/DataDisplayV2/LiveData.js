@@ -13,8 +13,7 @@ import Loader from "../Home/Loader";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    // backgroundColor: "white",
-    height: "max-content",
+    height: "`max-content`",
     width: "100vw",
     overflowX: "hidden",
     paddingRight: 18,
@@ -25,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
   flexContainer: {
     display: "flex",
     justifyContent: "space-between",
+
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
       marginLeft: 0,
@@ -48,7 +48,9 @@ const useStyles = makeStyles((theme) => ({
   },
   leftSide: {
     flex: 1,
-
+    [theme.breakpoints.down("sm")]: {
+      margin: 25,
+    },
     // backgroundColor: "yellow",
   },
   rightSide: {
