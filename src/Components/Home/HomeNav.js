@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   AppBar,
   Toolbar,
@@ -48,35 +48,33 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 
-const HomeNav = () => {
+const HomeNav = ({tabSelect, setTabSelect}) => {
   const tabNametoIndex = {
     1: "home",
     2: "livedata",
-    3: "about",
-    4: "contact",
   };
-  const IndextoTabName = {
-    home: 1,
-    livedata: 2,
-    about: 3,
-    contact: 4,
-  };
+ 
 
-  const location = window.location.href;
-  const locationName = location.split("/")[3];
+ 
   const history = useHistory();
+  const locationName = history.location.pathname.split("/")[1] || 'home';
   const classes = useStyle();
-  const [tabSelect, setTabSelect] = React.useState(
-    IndextoTabName[locationName]
-  );
-
 
 
   const handleChange = (event, newValue) => {
-    history.push(`/${tabNametoIndex[newValue]}`);
     setTabSelect(newValue);
+    history.push(`/${tabNametoIndex[newValue]}`);
   };
-  // console.log(tabSelect);
+  useEffect(() => {
+    
+    if (locationName === "home") {
+      setTabSelect(1);
+    } else if (locationName === "livedata") {
+      setTabSelect(2);
+    }
+  }, [locationName, history.location.pathname, setTabSelect]);
+
+
 
   return (
     <div className={classes.root}>
@@ -97,19 +95,12 @@ const HomeNav = () => {
           </div>
 
           <Tabs
-            value={tabSelect ? tabSelect : 1}
+            value={tabSelect}
             onChange={handleChange}
             className={classes.tabRes}
           >
             <Tab className={classes.tabWidth} value={1} label="Home" />
             <Tab className={classes.tabWidth} value={2} label="Live Data" />
-            <Tab className={classes.tabWidth} value={3} label="About" />
-            <Tab
-              className={classes.tabWidth}
-              label="Contact"
-              value={4}
-              style={{ marginRight: "30px" }}
-            />
           </Tabs>
         </Toolbar>
       </AppBar>

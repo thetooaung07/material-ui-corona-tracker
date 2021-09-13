@@ -8,6 +8,8 @@ import {
   Typography,
 } from "@material-ui/core";
 
+import { useHistory } from "react-router";
+
 const useStyles = makeStyles({
   root: {
     minWidth: 400,
@@ -43,8 +45,10 @@ const useStyles = makeStyles({
   },
 });
 
-const ContentBody = () => {
+const ContentBody = ({ setTabSelect }) => {
   const classes = useStyles();
+
+  const history = useHistory();
 
   return (
     <div className="wrapper-sub">
@@ -64,7 +68,14 @@ const ContentBody = () => {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button variant="outlined" className={classes.buttonCenter}>
+          <Button
+            variant="outlined"
+            className={classes.buttonCenter}
+            onClick={() => {
+              setTabSelect(2);
+              history.push("/livedata");
+            }}
+          >
             Learn More About Corona Virus
           </Button>
         </CardActions>
